@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #* ------------------------------------------------------
-#* ---------------  POWER BY DEXTER     -----------------
+#* ---------------  POWERED BY DEXTER     -----------------
 #* ------------------------------------------------------
 
 # Snake Game in Bash with five different modes and colorful display
