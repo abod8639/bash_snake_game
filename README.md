@@ -82,7 +82,4 @@ The script ensures your terminal settings (e.g. echo, cursor) are reset even aft
 ## 🧑‍💻 Author
 **Dexter** — follow for more terminal experiments and Bash wizardry!
 
----
 
-## 📜 License
-MIT License. Use, share, and modify freely.
