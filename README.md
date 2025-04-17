@@ -65,10 +65,12 @@ chmod +x snake.sh
 
 
 <!-- (images/250417_20h49m46s_screenshot.png) -->
-```md
+![Rainbow Snake](images/250417_20h55m32s_screenshot.png)
+![Rainbow Snake](image.png)
+
 ![Rainbow Snake](images/250417_20h49m46s_screenshot.png)
-![Rainbow Snake](images/image.png)
-```
+#```md
+#```
 
 ---
 
