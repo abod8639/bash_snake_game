@@ -69,8 +69,6 @@ chmod +x snake.sh
 ![Rainbow Snake](image.png)
 
 ![Rainbow Snake](images/250417_20h49m46s_screenshot.png)
-#```md
-#```
 
 ---
 
