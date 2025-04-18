@@ -25,6 +25,12 @@ This is a terminal version of the classic **Snake** game, implemented in pure Ba
 - A Unix-like terminal (e.g. Linux, macOS, or WSL)
 - `tput` and ANSI escape sequence support
 
+ Clone this repository:
+```bash
+git clone https://github.com/abod8639/bash_snake_game.git
+cd snake_game
+```
+
 ### ▶️ Run the Game
 ```bash
 chmod +x snake.sh
@@ -82,4 +88,7 @@ The script ensures your terminal settings (e.g. echo, cursor) are reset even aft
 ## 🧑‍💻 Author
 **Dexter** — follow for more terminal experiments and Bash wizardry!
 
+---
 
+## 📜 License
+MIT License. Use, share, and modify freely.
