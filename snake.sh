@@ -9,13 +9,13 @@
 # gameplay modes, dynamic difficulty, and colorful visual elements.
 
 #* ==============================================
-#* Game Configuration and Constants
+#*       Game Configuration and Constants
 #* ==============================================
 
 #* Game dimensions - defines the playable area
-readonly GAME_WIDTH=60      # Width of game area
-readonly GAME_HEIGHT=20     # Height of game area
-readonly INITIAL_DELAY=0.1  # Starting game speed (lower = faster)
+readonly GAME_WIDTH=60           # Width of game area
+readonly GAME_HEIGHT=20          # Height of game area
+readonly INITIAL_DELAY=0.1       # Starting game speed (lower = faster)
 readonly INITIAL_SNAKE_LENGTH=3  # Starting length of snake
 readonly INITIAL_SNAKE_X=25      # Starting X position
 readonly INITIAL_SNAKE_Y=10      # Starting Y position
@@ -33,13 +33,13 @@ readonly RESET="\033[0m"
 
 #* Game State Variables
 # Arrays to store snake body positions
-declare -a snake_x_pos      # X coordinates of snake segments
-declare -a snake_y_pos      # Y coordinates of snake segments
+declare -a snake_x_pos        # X coordinates of snake segments
+declare -a snake_y_pos        # Y coordinates of snake segments
 declare -i snake_length=$INITIAL_SNAKE_LENGTH
-declare -i score=0          # Player's current score
-declare -i game_over=0      # Game state flag
-declare direction="RIGHT"   # Current snake direction
-declare -i mode=1          # Current game mode (1-5)
+declare -i score=0            # Player's current score
+declare -i game_over=0        # Game state flag
+declare direction="RIGHT"     # Current snake direction
+declare -i mode=1             # Current game mode (1-5)
 declare delay=$INITIAL_DELAY  # Current game speed
 
 #* Terminal Configuration
@@ -122,11 +122,11 @@ generate_food() {
 # 5 - Yellow (Rainbow)
 get_border_color() {
     case $mode in
-        1) echo -n "$GREEN" ;;
-        2) echo -n "$BLUE" ;;
+        1) echo -n "$GREEN"   ;;
+        2) echo -n "$BLUE"    ;;
         3) echo -n "$MAGENTA" ;;
-        4) echo -n "$CYAN" ;;
-        5) echo -n "$YELLOW" ;;
+        4) echo -n "$CYAN"    ;;
+        5) echo -n "$YELLOW"  ;;
     esac
 }
 
@@ -167,11 +167,11 @@ draw_border() {
 # Special handling for rainbow mode (mode 5)
 get_snake_colors() {
     case $mode in
-        1) echo "$GREEN $WHITE" ;;
-        2) echo "$BLUE $YELLOW" ;;
+        1) echo "$GREEN $WHITE"  ;;
+        2) echo "$BLUE $YELLOW"  ;;
         3) echo "$MAGENTA $CYAN" ;;
-        4) echo "$CYAN $RED" ;;
-        5) echo "" "$WHITE" ;; # Rainbow mode handled separately
+        4) echo "$CYAN $RED"     ;;
+        5) echo "" "$WHITE"      ;; # Rainbow mode handled separately
     esac
 }
 
@@ -204,9 +204,9 @@ draw_snake() {
         echo -ne "\e[$((snake_y_pos[0]+1));$((snake_x_pos[0]+1))H$head_color"
         
         case $direction in
-            "UP") echo -ne "▲" ;;
-            "DOWN") echo -ne "▼" ;;
-            "LEFT") echo -ne "◄" ;;
+            "UP")    echo -ne "▲" ;;
+            "DOWN")  echo -ne "▼" ;;
+            "LEFT")  echo -ne "◄" ;;
             "RIGHT") echo -ne "►" ;;
         esac
     fi
@@ -218,11 +218,11 @@ draw_snake() {
             if (( mode == 5 )); then
                 # Rainbow mode - different color for each segment
                 case $((i % 6)) in
-                    0) snake_color=$RED ;;
-                    1) snake_color=$YELLOW ;;
-                    2) snake_color=$GREEN ;;
-                    3) snake_color=$CYAN ;;
-                    4) snake_color=$BLUE ;;
+                    0) snake_color=$RED     ;;
+                    1) snake_color=$YELLOW  ;;
+                    2) snake_color=$GREEN   ;;
+                    3) snake_color=$CYAN    ;;
+                    4) snake_color=$BLUE    ;;
                     5) snake_color=$MAGENTA ;;
                 esac
             fi
@@ -293,9 +293,9 @@ update_snake() {
     
     # Move head
     case $direction in
-        "UP") snake_y_pos[0]=$((snake_y_pos[0] - 1)) ;;
-        "DOWN") snake_y_pos[0]=$((snake_y_pos[0] + 1)) ;;
-        "LEFT") snake_x_pos[0]=$((snake_x_pos[0] - 1)) ;;
+        "UP")    snake_y_pos[0]=$((snake_y_pos[0] - 1)) ;;
+        "DOWN")  snake_y_pos[0]=$((snake_y_pos[0] + 1)) ;;
+        "LEFT")  snake_x_pos[0]=$((snake_x_pos[0] - 1)) ;;
         "RIGHT") snake_x_pos[0]=$((snake_x_pos[0] + 1)) ;;
     esac
     
@@ -365,18 +365,18 @@ update_snake() {
 handle_input() {
     if read -t 0.01 -n 1 key; then
         case $key in
-            w|W) [[ $direction != "DOWN" ]] && direction="UP" ;;
-            s|S) [[ $direction != "UP" ]] && direction="DOWN" ;;
-            a|A) [[ $direction != "RIGHT" ]] && direction="LEFT" ;;
-            d|D) [[ $direction != "LEFT" ]] && direction="RIGHT" ;;
+            w|W) [[ $direction != "DOWN" ]]  && direction="UP"    ;;
+            s|S) [[ $direction != "UP" ]]    && direction="DOWN"  ;;
+            a|A) [[ $direction != "RIGHT" ]] && direction="LEFT"  ;;
+            d|D) [[ $direction != "LEFT" ]]  && direction="RIGHT" ;;
             m|M) 
                 mode=$((mode % 5 + 1))
                 case $mode in
-                    1) delay=0.1 ;;
+                    1) delay=0.1  ;;
                     2) delay=0.07 ;;
                     3) delay=0.15 ;;
-                    4) delay=0.1 ;;
-                    5) delay=0.1 ;;
+                    4) delay=0.1  ;;
+                    5) delay=0.1  ;;
                 esac
                 ;;
             q|Q) game_over=1 ;;
